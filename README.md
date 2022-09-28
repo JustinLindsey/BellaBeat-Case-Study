@@ -16,7 +16,6 @@ The stakeholders will be
 * Bellabeat marketing analytics team
 
 ### ***Products***
-
 * Bellabeat app: The Bellabeat app provides users with health data related to their activity, sleep, stress, menstrual cycle, and mindfulness habits. This data can help users better understand their current habits and make healthy decisions. The Bellabeat app connects to their line of smart wellness products.
 
 * Leaf: Bellabeat’s classic wellness tracker can be worn as a bracelet, necklace, or clip. The Leaf tracker connects to the Bellabeat app to track activity, sleep, and stress.
@@ -29,7 +28,7 @@ daily wellness.
 * Bellabeat membership: Bellabeat also offers a subscription-based membership program for users. Membership gives users 24/7 access to fully personalized guidance on nutrition, activity, sleep, health and beauty, and mindfulness based on their lifestyle and goals.
 
 ## **Prepare**
-### ***Download data and store it appropriately***
+### ***Downloading data and storing it appropriately***
 [FitBit Fitness Tracker Data](https://www.kaggle.com/datasets/arashnic/fitbit) (CC0: Public Domain, dataset made available through ([Mobius](https://www.kaggle.com/arashnic)): This Kaggle data set contains personal fitness tracker from thirty fitbit users. Thirty eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
 
 ### ***Organization and Credibility***
@@ -44,17 +43,10 @@ From the 18 different CSV files available, I have selected 5 to focus on seeing 
 * dailyIntensities_merged.csv
 * weightLogInfo_merged.csv
 * sleepDay_merged.csv
-
-
-
-### 
-
+ 
 ## Process
-### ***Check the data for errors***
-
-### ***Choose your tools***
+### ***Tools for the study***
 The tools that I chose to use during this case study included **MySQL Workbench, Excel, and Tableau.** SQL for easy analysis and Tableau for visualizations of my findings.
 
-### ***Transform the data so you can work with it effectively***
+### ***Transforming the data and checking for errors***
 
-### ***Document the cleaning process***
