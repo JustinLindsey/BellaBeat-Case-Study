@@ -37,7 +37,7 @@ The dataset has 18 seperate CSV (Comma Seperated Value) files. The datasets cont
 ### ***Data used***
 Bellabeats success is dependent on understanding how its consumers use certain devices. Our data only comes from 30 individual users, so it is crucial to try to eliminate other factors that are not reliable. Instead of focusing on passive data, I will focus on directly input logged data. 
 
-From the 18 different CSV files available, I have selected 5 to focus on seeing as a lot of them were redundant.
+From the 18 different CSV files available, I have selected five to focus on seeing as a lot of them were redundant.
 * dailyActivity_merged.csv
 * dailyCalories_merged.csv
 * dailyIntensities_merged.csv
@@ -49,4 +49,6 @@ From the 18 different CSV files available, I have selected 5 to focus on seeing 
 The tools that I chose to use during this case study included **MySQL Workbench, Excel, and Tableau.** SQL for easy analysis and Tableau for visualizations of my findings.
 
 ### ***Transforming the data and checking for errors***
+I began by opening the five CSV files I chose in Excel. With using MySQL Workbench, I know that empty cells do not automatically convert to NULL values so I manually put those in before moving the files to SQL. I also changed the formatting of the dates column from 'mm-dd-yy' to ''yyyy-mm-dd hh:mm:ss' to stay consistent and make the converting of datatypes easier. The last thing I did in excel was change the titles of the columns for efficiency with writing my queries.
 
+After the cleaning in Excel, it is time to do a bit of validation and cleaning in SQL. For the full cleaning script click [Here](https://github.com/JustinLindsey/BellaBeat-Case-Study/blob/main/BellaBeatsCleaning.sql)
