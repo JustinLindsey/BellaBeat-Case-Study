@@ -3,11 +3,11 @@ SELECT distinct id, avg(weight_lbs), avg(bmi)
 FROM WeightLog
 group by id;
 
--- 1. how much time people spend in bed vs how often they are actually asleep
+-- how much time people spend in bed vs how often they are actually asleep
 SELECT id, minutes_asleep / 60 AS time_asleep, time_in_bed / 60 as time_in_bed
 FROM SleepDays;
 
--- 2. looking at total calories lost depending on the different types of active level
+-- looking at total calories lost depending on the different types of active level
 SELECT 
 	distinct id, 
     round(sum(very_active_distance),2) as very_active, 
@@ -17,7 +17,7 @@ SELECT
 FROM DailyActivity da
 GROUP BY id;
 
--- 3. tracking total_steps vs total_calories burned
+-- tracking total_steps vs total_calories burned
 SELECT distinct da.id, sum(da.total_steps) as total_steps, sum(dc.calories) as total_calories
 FROM DailyActivity da 
 LEFT JOIN DailyCalories dc 
@@ -63,7 +63,7 @@ FROM DailyActivity
 GROUP BY day_of_week, new_day_of_week
 ORDER BY day_of_week asc;
 
--- 4. combining the past 2 queries to later visualize calories vs day of week vs total_steps
+-- combining the past 2 queries to later visualize calories vs day of week vs total_steps
 SELECT weekday(dates) as day_of_week, 
 	CASE
 		WHEN weekday(dates) = 0 THEN 'Monday'
@@ -80,7 +80,7 @@ FROM DailyActivity
 GROUP BY day_of_week, new_day_of_week
 ORDER BY day_of_week asc;
 
--- 5. checking the sedentary minutes vs total steps and amount of calories burned
+-- checking the sedentary minutes vs total steps and amount of calories burned
 SELECT distinct id, sum(sedentary_minutes) as sedentary_minutes, sum(total_steps) as total_steps, sum(calories) as calories
 FROM DailyActivity
 GROUP BY id;
