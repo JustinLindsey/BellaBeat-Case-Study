@@ -51,4 +51,20 @@ The tools that I chose to use during this case study included **MySQL Workbench,
 ### ***Transforming the data and checking for errors***
 I began by opening the five CSV files I chose in Excel. With using MySQL Workbench, I know that empty cells do not automatically convert to NULL values so I manually put those in before moving the files to SQL. I also changed the formatting of the dates column from 'mm-dd-yy' to ''yyyy-mm-dd hh:mm:ss' to stay consistent and make the converting of datatypes easier. The last thing I did in excel was change the titles of the columns for efficiency with writing my queries.
 
-After the cleaning in Excel, it is time to do a bit of validation and cleaning in SQL. For the full cleaning script click [Here](https://github.com/JustinLindsey/BellaBeat-Case-Study/blob/main/BellaBeatsCleaning.sql)
+After the cleaning in Excel, it is time to do a bit of validation and cleaning in SQL. For the full cleaning script click [here](https://github.com/JustinLindsey/BellaBeat-Case-Study/blob/main/BellaBeatsCleaning.sql). I began by going through each of the tables and converting the 'dates' column to DATETIME datatype.
+```
+/* ---- Checking SleepDays Table ----*/
+SELECT *
+FROM SleepDays
+LIMIT 25;
+-- Changing the datatype of the 'dates' column' to DATETIME
+ALTER TABLE SleepDays
+MODIFY dates DATETIME;
+```
+Then I ran a query for the 'id' column. It is seen throughout each of the tables so I wanted to make sure it the length was accurate across all of them
+
+``` -- checking length of id
+SELECT length(id)
+FROM DailyIntensity -- Did the same for all the tables DailyActivity. DailyCalories. SleepDays. WeightLog
+where length(id) = 10;
+```
