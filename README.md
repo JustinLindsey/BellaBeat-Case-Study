@@ -152,5 +152,20 @@ GROUP BY id;
 ```
 ![Screen Shot 2022-09-29 at 4 56 34 PM](https://user-images.githubusercontent.com/99827985/193149415-d917025f-2341-48b2-b96d-5acbfcf9ec60.png)
 
+## **Act**
+***Conclusion***
+BellaBeats approach to smart devices and body positivity has been wonderful for their company. I believe using their marketing for data more will help tremendously. With more data it will allow us to understand the users to not only give them a better experience, but also take BellaBeats to new heights. Though the amount of data I was given to work with was not extense, their are still a couple takeaways and recommendations I have
+
+***Recommendations***
+* It is very obvious given the amount of data the 'Daily Activity' feature has that it is the users favorite way to track their wellness. Using this I reccommend pushing this feature more in marketing tools and to strive to make sure it works at peak efficiency.
+* Users tend to walk more in the middle of the week. Weekends are typically slower with most people relaxing from a long week of work. Lets give them reasons to become more active on those slower days. Challenges within the features may help with this.
+* Calories burned and Steps taken have a clear positive relationsip as expected. Steps taken is an easy way everyone can achieve fitness and health goals they desire.
+* Going forward BellaBeats can attempt to grab more identifying data. age, career, etc. could help us further identify what we can do to help the users.
+
+Ultimately, BellaBeats has a lot of potential. Working to collect more data will allow us to better understand things that we can improve on as a company!
+
+Thank you for your time.
+[Email](justinmarquis.lindsey@gmail.com)
+[LinkedIn](https://www.linkedin.com/in/justinmlindsey/)
 
 
