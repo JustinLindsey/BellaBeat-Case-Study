@@ -95,5 +95,62 @@ LEFT JOIN WeightLog AS wl
 	ON sd.id = wl.id 
 GROUP BY da.id;
 ```
-## **Analyze**
+## **Analyze and Share**
+
+The first visualization shows relationship between activity level, and the amount of calories burned. Ultimately it was established that their is no significant correlation between the level and how many calories burned.
+```
+SELECT 
+	distinct id, 
+    round(sum(very_active_distance),2) as very_active, 
+    round(sum(moderately_active_distance),2) moderately_active, 
+    round(sum(light_active_distance),2) light_active,
+    sum(calories) as total_calories
+FROM DailyActivity da
+GROUP BY id;
+```
+![Screen Shot 2022-09-29 at 5 01 35 PM](https://user-images.githubusercontent.com/99827985/193150070-62b7644b-a4a2-419c-a1ac-25abcedb4720.png)
+
+
+The next query and visualization details the calories burned vs the amount of steps the user took. We see a very clear trendline which is expected.
+```
+SELECT distinct da.id, sum(da.total_steps) as total_steps, sum(dc.calories) as total_calories
+FROM DailyActivity da 
+LEFT JOIN DailyCalories dc 
+	ON da.id = dc.id
+GROUP BY da.id
+ORDER BY total_steps desc;
+```
+![Screen Shot 2022-09-29 at 4 53 43 PM](https://user-images.githubusercontent.com/99827985/193149026-3fc0a803-c2e9-4441-9fef-cbd9c8256de9.png)
+
+
+I then viewed how people approached different days of the week. Looking to see how many steps were take and calories were burned depending on the day. The data is very consistent. On days that people take more steps, they also burn more calories.
+```
+SELECT weekday(dates) as day_of_week, 
+	CASE
+		WHEN weekday(dates) = 0 THEN 'Monday'
+		WHEN weekday(dates) = 1 THEN 'Tuesday'
+		WHEN weekday(dates) = 2 THEN 'Wednesday'
+		WHEN weekday(dates) = 3 THEN 'Thursday'
+		WHEN weekday(dates) = 4 THEN 'Friday'
+		WHEN weekday(dates) = 5 THEN 'Saturday'
+		WHEN weekday(dates) = 6 THEN 'Sunday'
+		ELSE weekday(dates) END AS new_day_of_week,
+	sum(calories) as total_calories,
+    sum(total_steps) as total_steps
+FROM DailyActivity
+GROUP BY day_of_week, new_day_of_week
+ORDER BY day_of_week asc;
+```
+![Screen Shot 2022-09-29 at 4 54 54 PM](https://user-images.githubusercontent.com/99827985/193149231-a25d4f41-2dbc-46fa-8bb2-d5270d59dcf7.png)
+
+
+The last query and viz is about the steps vs calories burned. The difference is that I factored in how mny sedentary minutes took place as well to see if this impacted the calories burned. The data shows that there was not much correlation.
+```
+SELECT distinct id, sum(sedentary_minutes) as sedentary_minutes, sum(total_steps) as total_steps, sum(calories) as calories
+FROM DailyActivity
+GROUP BY id;
+```
+![Screen Shot 2022-09-29 at 4 56 34 PM](https://user-images.githubusercontent.com/99827985/193149415-d917025f-2341-48b2-b96d-5acbfcf9ec60.png)
+
+
 
