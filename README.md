@@ -53,9 +53,9 @@ I began by opening the five CSV files I chose in Excel. With using MySQL Workben
 
 After the cleaning in Excel, it is time to do a bit of validation and cleaning in SQL. For the full cleaning script click [here](https://github.com/JustinLindsey/BellaBeat-Case-Study/blob/main/BellaBeatsCleaning.sql). I began by going through each of the tables and converting the 'dates' column to DATETIME datatype.
 ```
-/* ---- Checking SleepDays Table ----*/
+-- DONE FOR EVERY TABLE
 SELECT *
-FROM SleepDays
+FROM SleepDays 
 LIMIT 25;
 -- Changing the datatype of the 'dates' column' to DATETIME
 ALTER TABLE SleepDays
@@ -63,8 +63,37 @@ MODIFY dates DATETIME;
 ```
 Then I ran a query for the 'id' column. It is seen throughout each of the tables so I wanted to make sure it the length was accurate across all of them
 
-``` -- checking length of id
-SELECT length(id)
-FROM DailyIntensity -- Did the same for all the tables DailyActivity. DailyCalories. SleepDays. WeightLog
-where length(id) = 10;
+``` -- DONE FOR EVERY TABLE
+SELECT count(*), length(id) as len
+FROM DailyIntensity 
+WHERE length(id) = 10
+GROUP BY len;
 ```
+Next I checked the amount of distinct users per table
+```
+SELECT count(distinct id)
+FROM DailyIntensity; 
+```
+The result showed that there were a different amount of unique id's.
+* DailyActivity,DailyCalories,DailyIntensity = 33
+* SleepDay = 24
+* WeightLog = 8
+
+These are inconsistent but this query confirms that it is due to the users not using that product with NULL values
+```
+SELECT 
+	da.id, -- DailyActivity table will be used as the basis
+	AVG(da.total_distance) AS total_distance,
+	AVG(da.logged_activities_distance) AS logged_activity, 
+    AVG(da.calories) AS calories, 
+    AVG(sd.minutes_asleep)/60 AS avg_sleep_hours, 
+    AVG(wl.weight_lbs) AS avg_logged_weight
+FROM DailyActivity AS da 
+LEFT JOIN SleepDays AS sd 
+	ON da.id = sd.id 
+LEFT JOIN WeightLog AS wl 
+	ON sd.id = wl.id 
+GROUP BY da.id;
+```
+## **Analyze**
+
